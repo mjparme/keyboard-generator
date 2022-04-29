@@ -24,7 +24,6 @@ include <./includes/functions.scad>
 include <./includes/plate.scad>
 include <./includes/visualMode.scad>
 include <./includes/case.scad>
-include <./includes/usbHolder.scad>
 
 //**********Calculated*********
 adjustedSwitchHoleSize = switchHoleSize + switchHoleSlop;

@@ -6,7 +6,6 @@ layout = [
     [["vk"], 2.75]
 ];
 
-controllerHoleSlop = 0.0;
 switchHoleSlop = 0.3;
 plateThickness = 3;
 printOrientation = false;
@@ -20,5 +19,5 @@ stabHoleWidth = 12.1;
 caseWallThickness = 7;
 caseFloorThickness = 4;
 PART = "plate";
-controllerLength = 17.9 + controllerHoleSlop;
-controllerWidth = 33.5 + controllerHoleSlop;
+controllerLength = 17.9;
+controllerWidth = 33.5;

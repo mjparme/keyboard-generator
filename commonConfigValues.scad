@@ -127,13 +127,10 @@ deltaFromKeyArea = 2;
 
 //********* Electronics related parameters ***************
 //The length (x-axis dimension) of the controller
-controllerLength = 18.5 + controllerHoleSlop;
+controllerLength = 18.5;
 
 //The width (y-axis dimension) of the controller
-controllerWidth = 33.5 + controllerHoleSlop;
-
-//Any extra dimension to add to both the length and width of the controller
-controllerHoleSlop = 0.0;
+controllerWidth = 33.5;
 
 //The height of the walls that will surround the controller
 controllerAreaHeight = 3;
