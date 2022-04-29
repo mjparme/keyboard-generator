@@ -1,6 +1,6 @@
-use <../../lib/common/cubes.scad>
-use <../../../lib/common/connectors.scad>
-use <../../../lib/common/paths.scad>
+use <./lib/cubes.scad>
+use <./lib/connectors.scad>
+use <./lib/paths.scad>
 
 //NOTE: In this design "length" refers to x-axis and "width" refers to y-axis (prior to any rotation), "height" or "thickness" refers to z-axis
 
