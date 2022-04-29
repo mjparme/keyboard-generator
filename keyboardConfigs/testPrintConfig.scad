@@ -10,7 +10,7 @@ switchHoleSlop = 0.3;
 plateThickness = 3;
 printOrientation = false;
 stabilizerType = "plate";
-caseType = "separate";
+caseType = "integrated";
 numberOfHolesHorizontalEdges = 3;
 includePlateScrewHoles = false;
 //Good values to use for plate mounted stabs
@@ -18,6 +18,6 @@ stabHoleLength = 7.92;
 stabHoleWidth = 12.1;
 caseWallThickness = 7;
 caseFloorThickness = 4;
-PART = "plate";
+PART = "case";
 controllerLength = 17.9;
 controllerWidth = 33.5;

@@ -10,12 +10,12 @@ include <commonConfigValues.scad>
 $fn = 100;
 
 //Uncomment the keyboard config containing the keyboard to generate. Any variable in commonConfigValues.scad can be overridden in the included configs
-//include <./keyboardConfigs/testPrintConfig.scad>
+include <./keyboardConfigs/testPrintConfig.scad>
 //include <./keyboardConfigs/tenkeylessWithFunctionKeysConfig.scad>
 //include <./keyboardConfigs/standardKeyboardConfig.scad>
 //include <./keyboardConfigs/splitErgonomic-leftConfig.scad>
 //include <./keyboardConfigs/splitErgonomic-rightConfig.scad>
-include <./keyboardConfigs/melody96NoArrowsConfig.scad>
+//include <./keyboardConfigs/melody96NoArrowsConfig.scad>
 //include <./keyboardConfigs/gmmkProConfig.scad>
 
 //************* Includes for organization ***********
@@ -71,8 +71,6 @@ if (PART == "plate") {
             case(subType = "integratedWalls");
         }
     }
-} else if (PART == "usbHolder") {
-    usbHolder();
 } else if (PART == "case") {
     //For an integrated case the caseBottom needs to be rendered as separate part
     if (caseType == "integrated") {
