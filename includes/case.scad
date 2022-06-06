@@ -109,7 +109,7 @@ module screwHoles(z = 0) {
 module controllerHolder() {
     difference() {
         hollowCube(length = controllerLength, width = controllerWidth, height = controllerAreaHeight, wallThickness = controllerAreaWallThickness, hasFloor = false, dimensionType = "inner"); 
-        //Chop off the farthest wall in the y of the hollowCube so it doesn't interfer will usb connector hole
+        //Chop off the farthest wall in the y of the hollowCube so it doesn't interfer with usb connector hole
         translate([-1, controllerWidth + controllerAreaWallThickness - 0.01, -0.01]) cube([controllerLength + (2 * controllerAreaWallThickness) + 2, controllerAreaWallThickness + 1, controllerAreaHeight + 1]);
     }
 }
