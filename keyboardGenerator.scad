@@ -16,6 +16,7 @@ include <./keyboardConfigs/testPrintConfig.scad>
 //include <./keyboardConfigs/splitErgonomic-leftConfig.scad>
 //include <./keyboardConfigs/splitErgonomic-rightConfig.scad>
 //include <./keyboardConfigs/melody96NoArrowsConfig.scad>
+//include <./keyboardConfigs/melody96Config.scad>
 //include <./keyboardConfigs/gmmkProConfig.scad>
 
 //************* Includes for organization ***********
@@ -53,7 +54,7 @@ echo("PART: ", PART);
 
 //**********Draw**************
 if (PART == "plate") {
-    isIntegratedCase = caseType == "integrated";
+    isIntegratedCase = caseType == "integrated" && !switchHolesOnly;
 
     //If we have bottom cutouts or integrated case then print orientation is upside down
     isFlipPlate = printOrientation == true && (bottomCutouts == true || isIntegratedCase);
@@ -72,7 +73,7 @@ if (PART == "plate") {
         }
     }
 } else if (PART == "case") {
-    //For an integrated case the caseBottom needs to be rendered as separate part
+    //For an integrated case the walls of the case are part of the plate, so the case is just the bottom of the case
     if (caseType == "integrated") {
         case(subType = "caseBottom");
     } else {

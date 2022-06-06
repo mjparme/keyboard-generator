@@ -7,3 +7,7 @@ layout = [
     [2.25, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2.75],
     [1.25, 1.25, 1.25, 6.25, 1.25, 1.25, 1.25, 1.25]    
 ];
+
+//edgePadding = 0;
+//switchHolesOnly = true;
+//bottomCutouts = false;

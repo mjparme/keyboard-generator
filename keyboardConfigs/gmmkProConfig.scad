@@ -29,7 +29,7 @@ layout = [
 ];
 
 printOrientation = false;
-visualModelOn = false;
+visualModeOn = false;
 PART = "plate";
 caseType = "integrated";
 includePlateScrewHoles = false;

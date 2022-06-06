@@ -1,5 +1,5 @@
 module plate() {
-    if (visualModelOn) {
+    if (visualModeOn || switchHolesOnly) {
         mainPlate(plateWidth);
     } else {
         //Uncomment this projection to render a plate into 2D for export to DXF or SVG. If you want bottom cutouts then
@@ -12,6 +12,14 @@ module plate() {
                 topMountPlateScrewHoles();
             }
         }
+    }
+}
+
+module mainShape(plateLength, plateWidth, plateThickness) {
+    if (roundedCorners) {
+        roundedCube(length = plateLength, width = plateWidth, height = plateThickness, radius = roundedRadius, center = false, roundingShape = "circle");
+    } else {
+        cube([plateLength, plateWidth, plateThickness]);
     }
 }
 
@@ -43,8 +51,8 @@ module mainPlate(plateWidth) {
                     keyAreaY = plateWidth - keyAreaYPositions[rowNum] - yRowSize;
                     echo(str("RowNumber: ", rowNum, ", ColumnNumber: ", colNumber, ", Key U Size: ", keyUSize, ", Key Area X Size: ", keyAreaXSize, ", YRowSize: ", yRowSize, ", X Position: ", keyAreaX, ", Y Position: ", keyAreaY));
 
-                    //visualModelOn block is just for visualization of the keyboard layout
-                    if (visualModelOn) {
+                    //visualModeOn block is just for visualization of the keyboard layout
+                    if (visualModeOn) {
                         keyAreaYSize = isVerticalKey ? 2 * 1uSize : 1uSize;
                         keyArea(keyAreaXSize, keyAreaYSize, colNumber, [keyAreaX, keyAreaY, 0]);
                         //Need to center the visualization of the key cap in the keyArea in the X and Y axis
@@ -96,16 +104,8 @@ module mainPlate(plateWidth) {
     }
 }
 
-module mainShape(plateLength, plateWidth, plateThickness) {
-    if (roundedCorners) {
-        roundedCube(length = plateLength, width = plateWidth, height = plateThickness, radius = roundedRadius, center = false, roundingShape = "circle");
-    } else {
-        cube([plateLength, plateWidth, plateThickness]);
-    }
-}
-
 module switchHole(length, width, stabDistance = 0, bottomCutoutLength = 0, bottomCutoutWidth = 0) {
-    cube([length, width, plateThickness + 20]);
+    cube([length, width, plateThickness + 1]);
 
     x = length / 2 - bottomCutoutLength / 2;
     y = width / 2 - bottomCutoutWidth / 2;
@@ -140,7 +140,7 @@ module switchHole(length, width, stabDistance = 0, bottomCutoutLength = 0, botto
     }
 
     module plateMountedStabCutouts(distance) {
-        thickness = plateThickness + 20;
+        thickness = plateThickness + 2;
         dimension = [adjustedStabHoleLength, adjustedStabHoleWidth, thickness]; 
         cube(dimension);
         translate([distance, 0, 0]) cube(dimension);

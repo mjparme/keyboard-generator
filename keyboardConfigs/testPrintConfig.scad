@@ -21,3 +21,8 @@ caseFloorThickness = 4;
 PART = "case";
 controllerLength = 17.9;
 controllerWidth = 33.5;
+
+//visualModeOn = false;
+//switchHolesOnly = true;
+//edgePadding = 0;
+//bottomCutouts = false;

@@ -42,7 +42,8 @@ bottomCutouts = true;
 stabilizerType = "pcb"; 
 
 //The dimension of stablizers, these values come from the cherry MX datasheet, but should be the same for 
-//all cherry like stabilizers (if you put the costar hole dimensions here it should work just fine)
+//all cherry like stabilizers (if you put the costar hole dimensions here it should work just fine). For
+//plate mounted stabs a length of 7.92 and width of 12.1 works well.
 stabHoleLength = 6.65;
 stabHoleWidth = 12.3; 
 
@@ -56,6 +57,14 @@ switchClipAreaSize = 3.5;
 //If you change the value of switchClipAreaSize from 3.5 this value will have to be adjusted, goal is to 
 //have the cutout wall disappear for a key that requires a stablizer. 
 cutoutSize = 1.3; 
+
+//If you don't want the plate or case and just want the switch holes set this to true. You might want 
+//this if you are creating your own plate and/or case and just need the holes to integrate into your 
+//design. This will cause the holes to be rendered with the assumption you will diff them out of something.
+//If bottomCutous is true then the bottomCutous are also rendered, can set bottomCutouts to false if you
+//don't want this. Also, visualModeOn = true has priority over switchHolesOnly i.e. visualModeOn = true 
+//and switchHolesOnly = true results in visualMode being rendered.
+switchHolesOnly = false;
 
 //******Plate and Case parameters***********
 //Whether to round the corners of the plate and case or not, true to round the corners, false otherwise
@@ -115,7 +124,7 @@ heatSetInsertHeight = 8;
 //********* Visual Mode Parameters ***********
 //If visual mode is on a visual representation of the keyboard is shown. The colored area is the total area given to key, the 
 //switch hole will be centered in this area. Just helps visualizing what the layout will look like. 
-visualModelOn = false;
+visualModeOn = false;
 
 //For visual representation only, has nothing to do with rendered plate, the height of the visual representation of
 //the key area. Only matters if visual mode is on.
