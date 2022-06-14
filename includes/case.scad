@@ -49,6 +49,10 @@ module integratedCase() {
 
         module hole() {
             cube([usbHoleLength, caseWallThickness + 1, usbHoleHeight]);
+            x = usbHoleLength / 2 - controllerLength / 2; 
+            //Will just use the switchHoleSlop value here as a generic slop value even though this hole has nothing to
+            //do with switches
+            translate([x, 0, 0]) cube([controllerLength + switchHoleSlop, caseWallThickness + 1, controllerAreaHeight]);
         }
     }
 
@@ -74,13 +78,13 @@ module caseBottom() {
         //The controller holder goes on the case bottom for an integrated case, as part of that we need cutouts for the pins (wires will poke out slightly below the controller)
         //so those need to be differenced out here
         cutoutX = controllerXLocation + controllerAreaWallThickness;
-        cutoutY = plateWidth - controllerWidth - caseWallThickness;
+        cutoutY = plateWidth - controllerWidth;
         cutoutZ = caseFloorThickness - cutoutDepth + 0.1;
         translate([cutoutX, cutoutY, cutoutZ]) pinCutouts();
     }
 
     holderX = controllerXLocation;
-    holderY = plateWidth - controllerWidth - caseWallThickness - controllerAreaWallThickness;
+    holderY = plateWidth - controllerWidth - controllerAreaWallThickness;
     holderZ = caseFloorThickness;
     translate([holderX, holderY, holderZ]) controllerHolder();
 
@@ -108,9 +112,9 @@ module screwHoles(z = 0) {
 
 module controllerHolder() {
     difference() {
-        hollowCube(length = controllerLength, width = controllerWidth, height = controllerAreaHeight, wallThickness = controllerAreaWallThickness, hasFloor = false, dimensionType = "inner"); 
+        hollowCube(length = controllerLength, width = controllerWidth - caseWallThickness, height = controllerAreaHeight, wallThickness = controllerAreaWallThickness, hasFloor = false, dimensionType = "inner"); 
         //Chop off the farthest wall in the y of the hollowCube so it doesn't interfer with usb connector hole
-        translate([-1, controllerWidth + controllerAreaWallThickness - 0.01, -0.01]) cube([controllerLength + (2 * controllerAreaWallThickness) + 2, controllerAreaWallThickness + 1, controllerAreaHeight + 1]);
+        translate([-1, controllerWidth + controllerAreaWallThickness - caseWallThickness - 0.01, -0.01]) cube([controllerLength + (2 * controllerAreaWallThickness) + 2, controllerAreaWallThickness + 1, controllerAreaHeight + 1]);
     }
 }
 //Cutouts so the wire in the pin holes can stick into so the controller can sit flat
@@ -120,6 +124,6 @@ module pinCutouts() {
     translate([controllerLength - cutoutLength, 0, 0]) pinCutout();
 
     module pinCutout() {
-        cube([cutoutLength, controllerWidth, cutoutDepth]);
+        cube([cutoutLength, controllerWidth - 1.8, cutoutDepth]);
     }
 }

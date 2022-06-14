@@ -18,9 +18,15 @@ stabHoleLength = 7.92;
 stabHoleWidth = 12.1;
 caseWallThickness = 7;
 caseFloorThickness = 4;
-PART = "case";
+PART = "plate";
 controllerLength = 17.9;
 controllerWidth = 33.5;
+
+//The hole is made wide enough to extend through the back wall of the case based on caseWallThickness
+usbHoleLength = 10;
+
+//The height (z-axis dimension) of the hole use to access the usb connector. Make sure the head of the USB cable can fit
+usbHoleHeight = 5;
 
 //visualModeOn = false;
 //switchHolesOnly = true;
