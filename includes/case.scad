@@ -2,6 +2,7 @@
     This file is included in keyboardGenerator.scad and depends on all the variables defined there, won't work standalone
 */
 module case(subType = undef) {
+    echo("***** CASE *****");
     if (subType == undef) {
         separateCase();
     } else if (subType == "integratedWalls") {
@@ -19,7 +20,7 @@ module separateCase() {
 
     module separateCaseScrewHoles() {
         if (includeCaseScrewHoles) {
-            z = caseHeight - heatSetInsertHeight;
+            z = caseFrontHeight - heatSetInsertHeight;
             screwHoles(z) {
                 //For the separate case the heatset insert goes into the case so the holes need to be big enough to accomodate the heatset insert
                 height = heatSetInsertHeight + 0.5;
@@ -34,7 +35,7 @@ module separateCase() {
 }
 
 module integratedCase() {
-    z = -caseHeight;
+    z = -caseFrontHeight;
     difference() {
         translate([0, 0, z]) caseWalls(hasFloor = false);
         integratedCaseScrewHoles();
@@ -44,8 +45,8 @@ module integratedCase() {
     module usbConnectorHole() {
         x = controllerXLocation + (controllerLength + 2 * controllerAreaWallThickness) / 2 - usbHoleLength / 2;
         y = plateWidth - caseWallThickness - 0.01;
-        z = -caseHeight - 0.01;
-        translate([x, y, z])  hole();
+        z = -caseFrontHeight - 0.01;
+        translate([x, y, z]) hole();
 
         module hole() {
             cube([usbHoleLength, caseWallThickness + 1, usbHoleHeight]);
@@ -97,8 +98,47 @@ module caseBottom() {
 }
 
 module caseWalls(hasFloor = true) {
-    hollowRoundedCube(length = plateLength, width = plateWidth, height = caseHeight, radius = roundedRadius, wallThickness = caseWallThickness, floorThickness = caseFloorThickness, 
-            hasFloor = hasFloor, dimensionType = "outer", roundingShape = "circle", center = false);
+    //slope = caseRearHeight / plateWidth * 100
+    //hollowRoundedCube(length = plateLength, width = plateWidth, height = caseFrontHeight, radius = roundedRadius, wallThickness = caseWallThickness, floorThickness = caseFloorThickness, 
+    //        hasFloor = hasFloor, dimensionType = "outer", roundingShape = "circle", center = false);
+     slantPoints = [
+        [roundedRadius,roundedRadius], //bottom left
+        [roundedRadius, plateWidth - roundedRadius], //top left
+        [plateLength - roundedRadius, plateWidth - roundedRadius], //top right
+        [plateLength - roundedRadius, roundedRadius] //bottom right
+    ];
+
+    caseRearHeight = caseFrontHeight + (plateWidth * percentSlope) / 100;
+    //Want the extra height on the rear objects (if there is a slant) to be -z (want it to slop down, not up)
+    zAdjustment = caseRearHeight - caseFrontHeight; 
+    echo("CaseRearHeight: ", caseRearHeight);
+    echo("CaseFrontHeight: ", caseFrontHeight);
+    echo("PercentSlope: ", percentSlope);
+    echo("PlateWidth: ", plateWidth);
+    echo("ZAdjustment: ", zAdjustment);
+
+    difference() {
+        mainShape();
+        hollowLength = plateLength - 2 * caseWallThickness;
+        hollowWidth = plateWidth - 2 * caseWallThickness;
+        hollowHeight = caseRearHeight * 3;
+        echo("HollowHeight: ", hollowHeight);
+        translate([caseWallThickness, caseWallThickness, -hollowHeight / 2]) roundedCube(length = hollowLength, width = hollowWidth, height = hollowHeight, radius = roundedRadius, 
+            center = false, roundingShape = "circle", topRoundingShape = undef);
+    }
+
+    module mainShape() {
+        hull() {
+            translate(slantPoints[0]) objectToHull(height = caseFrontHeight);
+            translate(concat(slantPoints[1], [-zAdjustment])) objectToHull(height = caseRearHeight);
+            translate(concat(slantPoints[2], [-zAdjustment])) objectToHull(height = caseRearHeight);
+            translate(slantPoints[3]) objectToHull(height = caseFrontHeight);
+        }
+    }
+
+    module objectToHull(height) {
+        cylinder(r = roundedRadius, h = height);
+    }
 }
 
 //This module needs to be passed a child that draws the screw hole, this module will draw them in the correct positions

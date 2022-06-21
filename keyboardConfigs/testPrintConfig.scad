@@ -21,6 +21,7 @@ caseFloorThickness = 4;
 PART = "plate";
 controllerLength = 17.9;
 controllerWidth = 33.5;
+percentSlope = 10;
 
 //The hole is made wide enough to extend through the back wall of the case based on caseWallThickness
 usbHoleLength = 10;

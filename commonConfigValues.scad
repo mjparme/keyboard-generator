@@ -77,6 +77,12 @@ roundedRadius = 4;
 //One of "integrated" or "separate", the integrated type means the case walls is integrated with the plate
 caseType = "separate"; 
 
+//How how in the Z axis the case will be along front edge
+caseFrontHeight = 12;
+
+//The percent slope for the case, 6-8% is common for keyboards, 0 for no slope
+percentSlope = 8;
+
 //Indicates whether to put screw holes in the case, true to include screw holes, false otherwise
 includeCaseScrewHoles = true;
 
@@ -85,8 +91,6 @@ includeCaseScrewHoles = true;
 //space between switch holes and wall you can make it a little smaller than the edgePadding (1 to 1.5mm smaller works well)
 caseWallThickness = edgePadding;
 
-//How how in the Z axis the case will be
-caseHeight = 12;
 
 //For a seperate case this is how thick to make the floor. For an integrated case this is how thick to make the case bottom. For an 
 //integrated case the screws go up through the bottom so make sure to make the case bottom thick enough to be able to counter-sink
