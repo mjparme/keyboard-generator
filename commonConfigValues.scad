@@ -78,7 +78,7 @@ roundedRadius = 4;
 caseType = "separate"; 
 
 //How how in the Z axis the case will be along front edge
-caseFrontHeight = 12;
+caseFrontHeight = 8;
 
 //The percent slope for the case, 6-8% is common for keyboards, 0 for no slope
 percentSlope = 8;
@@ -154,12 +154,12 @@ controllerAreaWallThickness = 3;
 //the controller will be accesible from the rear of the case
 controllerXLocation = 15;
 
-//The length (x-axis dimension) of the hole use to access the usb connector. Make sure the head of the USB cable can fit
+//The length (x-axis dimension) of the hole use to access the usb connector. 
 //The hole is made wide enough to extend through the back wall of the case based on caseWallThickness
-usbHoleLength = 14;
+usbHoleLength = 10;
 
-//The height (z-axis dimension) of the hole use to access the usb connector. Make sure the head of the USB cable can fit
-usbHoleHeight = 10;
+//The height (z-axis dimension) of the hole use to access the usb connector. 
+usbHoleHeight = 5;
 cutoutDepth = 2;
 
 //Not supported yet
