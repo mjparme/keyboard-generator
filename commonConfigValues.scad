@@ -91,7 +91,6 @@ includeCaseScrewHoles = true;
 //space between switch holes and wall you can make it a little smaller than the edgePadding (1 to 1.5mm smaller works well)
 caseWallThickness = edgePadding;
 
-
 //For a seperate case this is how thick to make the floor. For an integrated case this is how thick to make the case bottom. For an 
 //integrated case the screws go up through the bottom so make sure to make the case bottom thick enough to be able to counter-sink
 //the screws. 

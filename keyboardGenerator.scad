@@ -24,7 +24,8 @@ include <./includes/positions.scad>
 include <./includes/functions.scad>
 include <./includes/plate.scad>
 include <./includes/visualMode.scad>
-include <./includes/case.scad>
+include <./includes/case/caseIntegrated.scad>
+include <./includes/case/caseSeparate.scad>
 
 //**********Calculated*********
 adjustedSwitchHoleSize = switchHoleSize + switchHoleSlop;
@@ -53,9 +54,8 @@ echo("StabilizerType: ", stabilizerType);
 echo("PART: ", PART);
 
 //**********Draw**************
+isIntegratedCase = caseType == "integrated" && !switchHolesOnly;
 if (PART == "plate") {
-    isIntegratedCase = caseType == "integrated" && !switchHolesOnly;
-
     //If we have bottom cutouts or integrated case then print orientation is upside down
     isFlipPlate = printOrientation == true && (bottomCutouts == true || isIntegratedCase);
     rotation = isFlipPlate ? [180, 0, 0]: [0, 0, 0];
@@ -69,16 +69,15 @@ if (PART == "plate") {
         plate();  
         //For an integrated case the walls are part of the plate
         if (isIntegratedCase) {
-            case(subType = "integratedWalls");
+            integratedCase();
         }
     }
 } else if (PART == "case") {
-    //For an integrated case the walls of the case are part of the plate, so the case is just the bottom of the case
-    if (caseType == "integrated") {
-        case(subType = "caseBottom");
+    //For an integrated case the walls of the case are part of the plate, so for the case just need the bottom of the case
+    if (isIntegratedCase) {
+        caseBottom();
     } else {
-        //case() with no subType parameter will be the separateCase
-        case();
+        separateCase();
     }
 } else {
     echo("Unrecognized PART name, not rendering anything, current PART name: ", PART);
