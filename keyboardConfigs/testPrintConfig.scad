@@ -7,7 +7,7 @@ layout = [
 ];
 
 switchHoleSlop = 0.3;
-plateThickness = 3;
+plateThickness = 5;
 printOrientation = false;
 stabilizerType = "plate";
 caseType = "integrated";
@@ -23,7 +23,7 @@ controllerLength = 17.9;
 controllerWidth = 33.5;
 percentSlope = 10;
 roundedCorners = true;
-roundedRadius = 3;
+roundedRadius = 2;
 
 //The hole is made wide enough to extend through the back wall of the case based on caseWallThickness
 usbHoleLength = 10;

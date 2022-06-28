@@ -73,6 +73,10 @@ roundedCorners = true;
 //If the corners are rounded what is the radius of the rounding, otherwise ignored
 roundedRadius = 4;
 
+//The type of object use to round corners (if rounded corners are wanted, ignored if roundedCorners is false). 
+//One of "circle" or "sphere", circle is just rounded in the xy plane sphere is rounded in three dimensions
+roundingShape = "sphere";
+
 //******Case Parameters********
 //One of "integrated" or "separate", the integrated type means the case walls is integrated with the plate
 caseType = "separate"; 

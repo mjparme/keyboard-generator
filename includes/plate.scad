@@ -17,7 +17,7 @@ module plate() {
 
 module mainShape(plateLength, plateWidth, plateThickness) {
     if (roundedCorners) {
-        roundedCube(length = plateLength, width = plateWidth, height = plateThickness, radius = roundedRadius, center = false, roundingShape = "circle");
+        roundedCube(length = plateLength, width = plateWidth, height = plateThickness, radius = roundedRadius, center = false, roundingShape = "circle", topRoundingShape = roundingShape);
     } else {
         cube([plateLength, plateWidth, plateThickness]);
     }
