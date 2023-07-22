@@ -12,7 +12,7 @@ keyAreaXSizes = [ for (rowNum = [ 0 : len(layout) - 1 ]) [
                                 //For horizontal space just need to put hs in the vector, when row heights are calculated it is a marker
                                 //to let that list comprehension know to go to the layout to get the usize of this horizontal space
                                 "hs"
-                            ) else if (isVector(layout[rowNum][colNum])) (
+                            ) else if (is_list(layout[rowNum][colNum])) (
                                 if (layout[rowNum][colNum][0] == "vs") (
                                     //This is vertical space, the 2nd position in the vector indicates the uSize of the space
                                     layout[rowNum][colNum][1] * 1uSize
@@ -70,7 +70,7 @@ rowLengths = [ for (rowNum = [ 0 : len(keyAreaXPositions) - 1 ])
                         ) 
 
                         //If the last column value isn't a vector this will be "undef" which evaluates to false
-                        //so no need to use our isVector function here
+                        //so no need to check for a list here
                         if (lastLayoutColumnValue[0] ==  "vk") (
                             keyXPosition + 1uSize
                         ) else (                                

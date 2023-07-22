@@ -39,7 +39,7 @@ module mainPlate(plateWidth) {
                 //For vectors with "vs" in them there is nothing to draw because it is a blank space; however, "vk" vectors
                 //do result in a hole being drawn
                 isVerticalKey = keyUSize[0] == "vk";
-                isDrawn = !isVector(keyUSize) || (isVector(keyUSize) && isVerticalKey);
+                isDrawn = !is_list(keyUSize) || (is_list(keyUSize) && isVerticalKey);
 
                 if (isDrawn) {
                     keyAreaXSize = keyAreaXSizes[rowNum][colNumber];

@@ -5,9 +5,6 @@ function vectorPositionSum(vector, index = 0, maxPosition, result = 0) = index >
 //Finds the maximum value in the given vector
 function maxVectorValue(vector, index = 0) = (index < len(vector) - 1) ? max(vector[index], maxVectorValue(vector, index + 1)) : vector[index];
 
-//Determines if a variable is a vector, true if it is, false otherwise. 
-function isVector(var) = is_list(var);
-
 //index 0 = 2, 2.25, and 2.75u keys, index 1 = 3u keys, index 2 = 6.25 keys, index 3 = 7u keys, index 4 = 8, 9, and 10u keys
 //There doesn't appear to be a formula to calculate these, just hardcodes values from the datasheet
 //2.x u keys share stab distance, so using floor to adjust down to 2
