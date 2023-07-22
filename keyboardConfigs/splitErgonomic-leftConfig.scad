@@ -15,8 +15,8 @@ layout = [
     [1.25, 1.25, 1.25, 1, 1, 1]
 ];
 
-PART = "plate";
-caseType = "integrated";
+PART = "case";
+caseType = "separate";
 printOrientation = false;
 numberOfHolesHorizontalEdges = 3;
 includePlateScrewHoles = false;

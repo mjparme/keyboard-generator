@@ -13,8 +13,8 @@ $fn = 100;
 //include <./keyboardConfigs/testPrintConfig.scad>
 //include <./keyboardConfigs/tenkeylessWithFunctionKeysConfig.scad>
 //include <./keyboardConfigs/standardKeyboardConfig.scad>
-//include <./keyboardConfigs/splitErgonomic-leftConfig.scad>
-include <./keyboardConfigs/splitErgonomic-rightConfig.scad>
+include <./keyboardConfigs/splitErgonomic-leftConfig.scad>
+//include <./keyboardConfigs/splitErgonomic-rightConfig.scad>
 //include <./keyboardConfigs/melody96NoArrowsConfig.scad>
 //include <./keyboardConfigs/melody96Config.scad>
 //include <./keyboardConfigs/gmmkProConfig.scad>
@@ -33,6 +33,11 @@ adjustedStabHoleLength = stabHoleLength + switchHoleSlop;
 adjustedStabHoleWidth = stabHoleWidth + switchHoleSlop;
 adjustedScrewDiameter = screwDiameter + screwHoleSlop; 
 adjustedScrewHeadDiameter = screwHeadDiameter + screwHoleSlop;
+
+//slope = (rise / run) * 100
+//rise = (run * slope) / 100
+//We know the slope (from config) and run (plateWidth), to find caseRearHeight need to solve for rise and add it to caseFrontHeight 
+caseRearHeight = caseFrontHeight + (plateWidth * percentSlope) / 100;
 
 echo("HorizontalScrewHolePositions: ", horizontalScrewHolePositions);
 echo("VerticalScrewHolePositions: ", verticalScrewHolePositions);
