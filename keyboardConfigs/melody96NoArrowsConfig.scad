@@ -22,6 +22,9 @@ caseType = "separate";
 includePlateScrewHoles = true;
 includeCaseScrewHoles = true;
 edgePadding = 8.5;
+plateThickness = 5;
+roundedCorners = true;
+roundedRadius = 2;
 
 /*
 Ctrl/cmd/alt - 1.25u

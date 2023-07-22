@@ -6,11 +6,11 @@ layout = [
     [["vk"], 2.75]
 ];
 
+PART = "plate";
+caseType = "integrated";
 switchHoleSlop = 0.3;
 plateThickness = 5;
 printOrientation = false;
-stabilizerType = "plate";
-caseType = "integrated";
 numberOfHolesHorizontalEdges = 3;
 includePlateScrewHoles = false;
 //Good values to use for plate mounted stabs
@@ -18,12 +18,12 @@ stabHoleLength = 7.92;
 stabHoleWidth = 12.1;
 caseWallThickness = 6;
 caseFloorThickness = 4;
-PART = "plate";
 controllerLength = 17.9;
 controllerWidth = 33.5;
 percentSlope = 10;
 roundedCorners = true;
 roundedRadius = 2;
+stabilizerType = "plate";
 
 //The hole is made wide enough to extend through the back wall of the case based on caseWallThickness
 usbHoleLength = 10;

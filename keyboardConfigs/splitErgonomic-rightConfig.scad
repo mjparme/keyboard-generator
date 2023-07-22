@@ -14,3 +14,9 @@ layout = [
     //Bottom row -- 2u space key and 2 keys on the right that can be mapped to whatever
     [["vs", 0.5], 2, 1.25, 1.25, 1.25, 1, 1]
 ];
+
+PART = "plate";
+caseType = "integrated";
+printOrientation = false;
+numberOfHolesHorizontalEdges = 3;
+includePlateScrewHoles = false;
