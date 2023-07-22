@@ -4,8 +4,7 @@
 */
 
 //List comprehension that calculates the size of each key in the X axis. If a position contains a vector it is either vertical blank
-//space or a vertical key. Checking for being a vector is using a heuristic that could break in a future version of OpenSCAD, it 
-//is using a dirty hack rather than using a language feature
+//space or a vertical key. 
 keyAreaXSizes = [ for (rowNum = [ 0 : len(layout) - 1 ]) [
                         for (colNum = [ 0 : len(layout[rowNum]) - 1])
                             if (layout[rowNum][0] == "hs") (
