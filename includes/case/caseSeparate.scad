@@ -4,16 +4,20 @@ include <caseCommon.scad>
 
 module separateCase() {
     difference() {
-        caseWalls();
+        caseWalls(slopeDirection = "up");
         separateCaseScrewHoles(); 
+        usbConnectorHole(z = 0);
     }
+
+    translate([0, 0, -caseFloorThickness + 0.001]) caseBottom(includeScrewHoles = false);
 
     module separateCaseScrewHoles() {
         if (includeCaseScrewHoles) {
-            z = caseFrontHeight - heatSetInsertHeight;
+            //z = caseFrontHeight - heatSetInsertHeight;
+            z = caseFloorThickness;
             screwHoles(z) {
-                //For the separate case the heatset insert goes into the case so the holes need to be big enough to accomodate the heatset insert
-                height = heatSetInsertHeight + 0.5;
+                //For the separate case the height of the holes have to be tall enough to make it out the top of the rear of the case
+                height = caseRearHeight;
 
                 //We slightly taper these holes so the heat set insert is much easier to insert, the constant can be adjusted to change the delta between the 
                 //top and bottom diameters (todo: maybe make this a variable??)
